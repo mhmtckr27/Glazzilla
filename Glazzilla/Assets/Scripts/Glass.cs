@@ -23,48 +23,39 @@ public class Glass : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetMouseButtonDown(0))
         {
-            //var direction = (gameObject.transform.localPosition - Input.mousePosition).normalized;
-            //direction = -direction.normalized;
-            //var magnitude = 30f *
-            //Vector2.Dot(direction, Input.mousePosition.normalized);
-
-            //var force = Vector2.Distance(gameObject.transform.localPosition, Input.mousePosition) * ((gameObject.transform.localPosition - Input.mousePosition).normalized);
-            //rigidbody.AddForceAtPosition(magnitude * direction,gameObject.transform.localPosition,ForceMode2D.Force);
-
-            //Debug.Log(gameObject.transform.localPosition);
-            //Debug.Log(gameObject.transform.position);
-            //Debug.Log(Input.mousePosition);
-            //Debug.Log((gameObject.transform.position - Input.mousePosition).normalized);
-            //Debug.Log(gameObject.transform.InverseTransformPoint(Input.mousePosition));
-            //GetComponent<Rigidbody2D>().AddForce(direction * magnitude);
 
 
 
-            //var mouse = new Vector2(Input.mousePosition.x / Screen.width*screenWidthPerUnits, Input.mousePosition.y / Screen.height * screenHeightPerUnits);
+
+            
+
             var mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Debug.Log("MousePos = " + mousePos);
 
             var dir = (transform.position - mousePos).normalized;
-            float magnitude = 300f;
-
-            GetComponent<Rigidbody2D>().AddForce(dir * magnitude);
-            //Debug.Log(dir);
-            //Debug.Log(mouse);
-
-            //Debug.Log(gameObject.transform.position.);
+            float magnitude = 50f;
+            RaycastHit2D raycast = Physics2D.Raycast(mousePos,dir);
+            var collisionPoint = raycast.point;
+            RaycastHit2D hit;
+            Debug.DrawRay(mousePos, transform.position - mousePos, Color.green,15f);
+            LayerMask layerMask;
+            //Ray ray = Physics2D.Raycast(mousePos,dir,out hit,Mathf.Infinity,layerMask);
             
+            rigidbody.AddForceAtPosition(dir * magnitude, collisionPoint,ForceMode2D.Force);
+            float clampX = rigidbody.velocity.x;
+            float clampY = rigidbody.velocity.y;
+            clampX = Mathf.Clamp(clampX, 0f, 0.1f);
+            clampY = Mathf.Clamp(clampY, 0f, 0.1f);
+            rigidbody.velocity = new Vector2(clampX, clampY);
 
-            //var magn = 50f;
-            //var mousePos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            
-            
-           
-            //var dir2 = gameObject.transform.InverseTransformDirection(dir);
-            //dir2.Normalize();
-
-            //GetComponent<Rigidbody2D>().AddForce(magn * -dir2);
         }
+
+        
+
     }
+
+
 }
