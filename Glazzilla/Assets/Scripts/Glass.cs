@@ -57,5 +57,9 @@ public class Glass : MonoBehaviour
 
     }
 
-
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		GetComponent<Rigidbody2D>().gravityScale = 20;
+		GetComponent<Rigidbody2D>().freezeRotation = true;
+	}
 }
