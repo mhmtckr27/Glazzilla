@@ -79,7 +79,4 @@ public class Glass : MonoBehaviour
         collision.transform.eulerAngles = new Vector3(0, 0, 180);
     }
 
-
-
-
 }
