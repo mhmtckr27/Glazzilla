@@ -41,9 +41,13 @@ public class Glass : MonoBehaviour
             float magnitude = 30f;
             RaycastHit2D raycast = Physics2D.Raycast(mousePos, dir);
             var collisionPoint = raycast.point;
+                /// Kaan'nin fizik düzeltme denemeleri
+            if (mousePos.y > transform.position.y)
+                collisionPoint.x *= -1;
+               ///
             Debug.DrawRay(mousePos, transform.position - mousePos, Color.green, 15f);
             rigidbody.AddForceAtPosition(new Vector3(dir.x * Mathf.PI/2 , 1, 0) * magnitude, collisionPoint, ForceMode2D.Force);
-             
+            
             float clampX = rigidbody.velocity.x;
             float clampY = rigidbody.velocity.y;
             clampX = Mathf.Clamp(clampX, 0f, 0.1f);
