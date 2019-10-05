@@ -43,7 +43,7 @@ public class Glass : MonoBehaviour
             var collisionPoint = raycast.point;
             Debug.DrawRay(mousePos, transform.position - mousePos, Color.green, 15f);
             rigidbody.AddForceAtPosition(new Vector3(dir.x * Mathf.PI/2 , 1, 0) * magnitude, collisionPoint, ForceMode2D.Force);
-
+             
             float clampX = rigidbody.velocity.x;
             float clampY = rigidbody.velocity.y;
             clampX = Mathf.Clamp(clampX, 0f, 0.1f);

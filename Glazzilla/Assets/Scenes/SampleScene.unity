@@ -501,6 +501,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Glass
       objectReference: {fileID: 0}
+    - target: {fileID: 3610766136368032539, guid: 839d4886642a8ed4b8feab14b7465862,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 628610664}
+    - target: {fileID: 3610766136368032539, guid: 839d4886642a8ed4b8feab14b7465862,
+        type: 3}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 2092499852295266437}
     - target: {fileID: 3610766136368032542, guid: 839d4886642a8ed4b8feab14b7465862,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -556,16 +566,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 3610766136368032539, guid: 839d4886642a8ed4b8feab14b7465862,
-        type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 628610664}
-    - target: {fileID: 3610766136368032539, guid: 839d4886642a8ed4b8feab14b7465862,
-        type: 3}
-      propertyPath: gameState
-      value: 
-      objectReference: {fileID: 2092499852295266437}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 839d4886642a8ed4b8feab14b7465862, type: 3}
 --- !u!1001 &4792441722976769609
