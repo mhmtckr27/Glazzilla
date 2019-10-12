@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3610766136368032540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.15, y: 0.56, z: -3.7459042}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.7260503}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.7260503}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -117,11 +117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc77302c37a09c64da182358beb338c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InitVelocity: 10
-  InitForce: 10
+  magnitude: 30
   rigidbody: {fileID: 0}
   camera: {fileID: 0}
+  innerCollider: {fileID: 1647765815}
   gameState: {fileID: 0}
+  HP: 90
 --- !u!60 &1647765814
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -147,11 +148,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.825929, y: 1.1805615}
+    - - {x: -0.8055865, y: 1.1756709}
       - {x: -0.41613916, y: -0.85919863}
       - {x: 0.42377323, y: -0.86378056}
       - {x: 0.80530554, y: 1.1740825}
-      - {x: 1.0599396, y: 1.1579655}
+      - {x: 1.0735552, y: 1.1763246}
       - {x: 0.60907364, y: -1.1843607}
       - {x: -0.6056814, y: -1.1805614}
       - {x: -1.069775, y: 1.1805615}

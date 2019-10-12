@@ -8,12 +8,19 @@ public class Bug : MonoBehaviour
     [SerializeField] private Vector2[] wayPoints;
     [SerializeField] private float bugSpeed;
     [SerializeField] private int direction;
+    [SerializeField] private float str;
+    [SerializeField] private GameState gameState;
     private bool inGlass = false;
 
     // Start is called before the first frame update
     void Start()
     {
         changeRotation();
+    }
+
+    public bool getInGlass()
+    {
+        return this.inGlass;
     }
 
     private void changeRotation()
@@ -50,20 +57,52 @@ public class Bug : MonoBehaviour
         changeRotation();
     }
 
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            inGlass = true;
+
+            gameState.inGlass = inGlass;
+            gameState.stackNo++;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            inGlass = false;
+            gameState.inGlass = inGlass;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        bump(collision);
+    }
+
+    private void bump(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
-            inGlass = true;
+            damageGlass(collision);
             direction = -direction;
             changeRotation();
-            
         }
+    }
 
+
+
+    private void damageGlass(Collision2D collision)
+    {
+        collision.collider.gameObject.GetComponent<Glass>().hurt(str);
     }
 
     private void panic()
     {
-        transform.position +=new Vector3( bugSpeed * Time.deltaTime * direction,0,0);
+        //if(gameState.stackNo>0)
+            transform.position +=new Vector3( bugSpeed * Time.deltaTime * direction,0,0);
     }
 }
